@@ -1,0 +1,63 @@
+
+<div id="reply" class="reply">
+<a name="comment"></a>
+<p class="detail">
+登录后才能发表评论，请先 <a href="/user.php?action=login"><u>登录</u></a> 。
+</p>
+<script type="text/javascript">
+var masaic = '0';
+
+function CommentLike(id){
+	$.post("/ajaxdo.php?module=commentrating",{"id":id,"token":$("#token").val()},function(re){
+		re=parseInt(re);
+		switch(re){
+			case 1:
+				$("#likenum_"+id).html(parseInt($("#likenum_"+id).html())+1);
+				break;
+			case 4:
+				alert(_LANGJS.COMMENT_GOOD_DONE);
+				break;
+			case 6:
+				alert(_LANGJS.COMMENT_SELF);
+				break;
+			default:break;
+		}
+	});
+}
+$(document).ready(function(){
+	$(".likebox .likepre").click(function(){
+            CommentLike($(this).attr("rel"));
+        });
+});
+
+
+</script>
+<div>
+	</div>
+	<div id="footer">
+        <span class="copyright fleft">
+    		Copyright &copy; 2010 - 2016 <a href="#">wooyun.org</a>, All Rights Reserved
+    		<a href="http://www.miibeian.gov.cn/">京ICP备15041338号-1</a>
+    		<!--a href="http://sae.sina.com.cn" target="_blank"><img src="/images/sae_bottom_logo.png" title="Powered by Sina App Engine"></a-->
+    	</span>
+        <span class="other fright">
+                        <a href="/impression">行业观点</a>
+            · <a href="/lawer">法律顾问</a>
+            · <a href="/contactus">联系我们</a>
+            · <a href="/help">帮助</a>
+            · <a href="/about">关于</a>
+        </span>
+    </div>
+	<script type="text/javascript">
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc12f88b5c1cd041a732dea597a5ec94c' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+    <script type="text/javascript" id="bdshare_js" data="type=button" ></script>
+    <script type="text/javascript" id="bdshell_js"></script>
+    <script type="text/javascript">
+        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+        
+        if (top.location !== self.location) top.location=self.location;
+    </script>
+</body>
+</html>

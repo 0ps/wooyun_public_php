@@ -1,0 +1,50 @@
+<include file="Public/top" title="top" />
+<style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style>
+<hr>
+	<div class="row">
+	  <div class="col-md-1"></div>
+	  <div class="col-md-10">
+		  <div>
+	  		<h2>关键字【{$_REQUEST['key']}】的搜索结果<small>共30记录</small></h2>
+			  	<table class="table table-striped">
+			  	<tbody><tr>
+			  		<th width="10%">提交时间</th>
+			  		<th>标题</th>
+			  		<th width="15%">漏洞类型</th>
+			  		<th width="15%">漏洞厂商</th>
+			  		<th width="10%">提交者</th>
+			  	</tr>
+			  	<foreach name="data" item="v">
+			  	<tr>
+			  		<td>{$v.wybug_date}</td>
+			  		<td><a href="{:U('show/index')}?id={$v.wooyun_id}" target="_blank">
+			  			 {$v.wybug_title}</a></td>
+			  		<td><a href="{:U('index/type')}?key={$v.wybug_type}" target="_blank">{$v.wybug_type}</a></td>
+			  		<td><a href="{:U('index/corp')}?key={$v.wybug_corp}" target="_blank">{$v.wybug_corp}</a></td>
+			  		<td><a href="{:U('index/author')}?key={$v.wybug_author}" target="_blank">{$v.wybug_author}</a></td>
+			  	</tr>
+			  	</foreach>
+			  	
+				</tbody></table>
+				<!-- 分页组件js -->
+				<script src="__STATIC__/static/bugs/js/jquery.twbsPagination.js"></script>
+			<div>{$page}
+			</div>
+	  <div class="col-md-1"></div>
+	</div>
+
+
+<include file="Public/foot" title="foot" />
